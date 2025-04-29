@@ -1,48 +1,39 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fynstore - Top Up</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <img src="fyn.png" alt="Fynstore Logo" class="logo-img">
-      <h1>Fynstore</h1>
-    </div>
-  </header>
-  
-  <section class="products">
-    <h2>Pilih Produk Top-Up</h2>
-    <div class="product" data-name="Top-Up 100.000 IDR" data-price="100000">
-      <h3>Top-Up 100.000 IDR</h3>
-      <button class="add-to-cart">Tambah ke Keranjang</button>
-    </div>
-    <div class="product" data-name="Top-Up 50.000 IDR" data-price="50000">
-      <h3>Top-Up 50.000 IDR</h3>
-      <button class="add-to-cart">Tambah ke Keranjang</button>
-    </div>
-    <div class="product" data-name="Top-Up 200.000 IDR" data-price="200000">
-      <h3>Top-Up 200.000 IDR</h3>
-      <button class="add-to-cart">Tambah ke Keranjang</button>
-    </div>
-  </section>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fynstore Top-Up</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <img src="fyn.png" alt="Fynstore Logo" class="logo" />
+      <h1>Fynstore Top-Up</h1>
+    </header>
 
-  <section class="cart">
-    <h2>Keranjang Belanja</h2>
-    <ul id="cart-items"></ul>
-    <div class="total">
-      <p>Total: <span id="total-price">0</span> IDR</p>
-    </div>
-    <button id="checkout" disabled>Checkout</button>
-  </section>
+    <main class="container">
+      <div class="product-list" id="productList">
+        <!-- Produk akan di-generate lewat JS -->
+      </div>
 
-  <footer>
-    <p>&copy; 2025 Fynstore. All rights reserved.</p>
-  </footer>
+      <section class="cart">
+        <h2>Keranjang</h2>
+        <ul id="cartItems"></ul>
+        <div class="cart-footer">
+          <label for="note">Catatan (ID/Server/Nickname):</label>
+          <textarea
+            id="note"
+            placeholder="Contoh: 123456 (Server 8921) - NamaAkun"
+            rows="3"
+          ></textarea>
 
-  <script src="script.js"></script>
-</body>
+          <p>Total: <span id="cartTotal">Rp0</span></p>
+          <button onclick="checkout()">Bayar via WhatsApp</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
 </html>
