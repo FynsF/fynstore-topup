@@ -1,93 +1,97 @@
-const cart = [];
-const cartItems = document.getElementById("cart-items");
-const totalPriceElem = document.getElementById("total-price");
-const checkoutButton = document.getElementById("checkout");
+const products = [
+  { id: 1, name: "Diamond ML 86", price: 25000 },
+  { id: 2, name: "Diamond ML 172", price: 48000 },
+  { id: 3, name: "Diamond ML 257", price: 70000 },
+];
 
-// Fungsi untuk menambah item ke keranjang
-document.querySelectorAll(".add-to-cart").forEach((button) => {
-  button.addEventListener("click", function () {
-    const productElement = this.parentElement;
-    const productName = productElement.getAttribute("data-name");
-    const productPrice = parseInt(productElement.getAttribute("data-price"));
+let cart = [];
 
-    // Mengecek apakah produk sudah ada di keranjang
-    const existingProduct = cart.find((item) => item.name === productName);
-    if (existingProduct) {
-      existingProduct.quantity++;
-    } else {
-      cart.push({ name: productName, price: productPrice, quantity: 1 });
-    }
-
-    updateCart();
+function renderProducts() {
+  const list = document.getElementById("productList");
+  products.forEach((product) => {
+    const div = document.createElement("div");
+    div.className = "product";
+    div.innerHTML = `
+      <h3>${product.name}</h3>
+      <p>Rp${product.price.toLocaleString()}</p>
+      <button onclick="addToCart(${product.id})">Tambah</button>
+    `;
+    list.appendChild(div);
   });
-});
+}
 
-// Update tampilan keranjang dan total harga
-function updateCart() {
-  cartItems.innerHTML = "";
+function addToCart(id) {
+  const found = cart.find((item) => item.id === id);
+  if (found) {
+    found.qty++;
+  } else {
+    const product = products.find((p) => p.id === id);
+    cart.push({ ...product, qty: 1 });
+  }
+  renderCart();
+}
+
+function renderCart() {
+  const cartList = document.getElementById("cartItems");
+  const totalEl = document.getElementById("cartTotal");
+  cartList.innerHTML = "";
   let total = 0;
 
   cart.forEach((item, index) => {
-    const li = document.createElement("li");
-    li.classList.add("cart-item");
-
-    // Detail item dan tombol edit/hapus
-    li.innerHTML = `
-      <div class="item-details">
-        <span>${item.name}</span>
-        <span>${item.price} IDR</span>
-        <div class="quantity">
-          <button class="decrease" data-index="${index}">-</button>
-          <span>${item.quantity}</span>
-          <button class="increase" data-index="${index}">+</button>
-        </div>
-        <button class="remove" data-index="${index}">Hapus</button>
-      </div>
+    total += item.price * item.qty;
+    cartList.innerHTML += `
+      <li>
+        ${item.name} - Rp${item.price.toLocaleString()} x 
+        <input type="number" value="${
+          item.qty
+        }" min="1" onchange="updateQty(${index}, this.value)">
+        <button onclick="removeItem(${index})">❌</button>
+      </li>
     `;
-    cartItems.appendChild(li);
-
-    // Hitung total harga
-    total += item.price * item.quantity;
   });
 
-  totalPriceElem.textContent = total;
-  checkoutButton.disabled = total === 0;
+  totalEl.textContent = `Rp${total.toLocaleString()}`;
 }
 
-// Menambah jumlah item
-cartItems.addEventListener("click", function (event) {
-  const target = event.target;
-  const index = target.getAttribute("data-index");
+function updateQty(index, qty) {
+  cart[index].qty = parseInt(qty);
+  renderCart();
+}
 
-  if (target.classList.contains("increase")) {
-    cart[index].quantity++;
-  } else if (
-    target.classList.contains("decrease") &&
-    cart[index].quantity > 1
-  ) {
-    cart[index].quantity--;
-  } else if (target.classList.contains("remove")) {
-    cart.splice(index, 1);
+function removeItem(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+
+function checkout() {
+  if (cart.length === 0) {
+    alert("Keranjang kosong!");
+    return;
   }
 
-  updateCart();
-});
+  let message = "Halo Admin Fynstore! Saya ingin top-up:\n\n";
+  let total = 0;
 
-// Fungsi untuk checkout
-checkoutButton.addEventListener("click", function () {
-  const totalAmount = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
-  const cartDetails = cart
-    .map((item) => `${item.name} - ${item.quantity} x ${item.price} IDR`)
-    .join("\n");
+  cart.forEach((item) => {
+    message += `- ${item.name} x${item.qty} = Rp${(
+      item.price * item.qty
+    ).toLocaleString()}\n`;
+    total += item.price * item.qty;
+  });
 
-  // Mengarahkan ke WhatsApp
-  const whatsappMessage = `Saya ingin melakukan top-up dengan total ${totalAmount} IDR. Detail:\n\n${cartDetails}`;
-  const whatsappLink = `https://wa.me/6281269441924?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+  message += `\nTotal: Rp${total.toLocaleString()}`;
 
-  window.location.href = whatsappLink;
-});
+  // Tambah catatan pembeli
+  const note = document.getElementById("note").value.trim();
+  if (note) {
+    message += `\n\nCatatan:\n${note}`;
+  }
+
+  const encodedMessage = encodeURIComponent(message);
+  const phone = "6281269441924"; // Ganti dengan nomor admin
+  const waLink = `https://wa.me/${phone}?text=${encodedMessage}`;
+  window.open(waLink, "_blank");
+}
+
+
+renderProducts();
