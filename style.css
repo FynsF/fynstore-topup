@@ -1,0 +1,307 @@
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #121212;
+  color: #f4f4f4;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===== Header ===== */
+.header {
+  background: linear-gradient(to right, #1f1f1f, #0f2027, #203a43);
+  color: #d4af37;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #444;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: background 0.4s ease;
+}
+
+.header:hover {
+  background: linear-gradient(to right, #0f2027, #203a43, #1f1f1f);
+}
+
+.logo {
+  height: 70px;
+  margin-bottom: 1rem;
+  filter: brightness(1.2);
+}
+
+/* ===== Container Layout ===== */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 1280px;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 3rem 2rem;
+  }
+}
+
+/* ===== Product List ===== */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  flex: 2;
+}
+
+.product {
+  background: #1a1a1d;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+}
+
+.product:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 50px rgba(212, 175, 55, 0.25);
+  filter: brightness(1.05);
+}
+
+.product h3 {
+  font-size: 1.2rem;
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.product p {
+  color: #d4af37;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.product button {
+  background: #d4af37;
+  color: #0e0e10;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product button:hover {
+  background: #f5d778;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ===== Cart ===== */
+.cart {
+  flex: 1;
+  background: #1a1a1d;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 480px;
+}
+
+.cart h2 {
+  font-size: 1.5rem;
+  color: #d4af37;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.cart ul {
+  list-style: none;
+}
+
+.cart li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cart input[type="number"] {
+  width: 70px;
+  padding: 0.5rem;
+  background: #121212;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* Tombol dalam cart */
+.cart button {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cart button:hover {
+  background: #c42e3b;
+  transform: scale(1.05);
+}
+
+/* ===== Textarea ===== */
+textarea {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  background: #121212;
+  color: #fff;
+  border: 1px solid #555;
+  resize: vertical;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+/* ===== Cart Footer ===== */
+.cart-footer {
+  margin-top: 2rem;
+}
+
+.cart-footer p {
+  font-size: 1.2rem;
+  color: #d4af37;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.cart-footer button {
+  background: #d4af37;
+  color: #0e0e10;
+  padding: 0.8rem 1.5rem;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.cart-footer button:hover {
+  background: #f5d778;
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* ===== Animations ===== */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Responsive - Small screens ===== */
+@media (max-width: 480px) {
+  .header {
+    padding: 2rem 1rem;
+  }
+
+  .logo {
+    height: 60px;
+  }
+
+  .product h3 {
+    font-size: 1.1rem;
+  }
+
+  .cart-footer button {
+    font-size: 1rem;
+  }
+}
+
+/* ===== Button WA ===== */
+.wa-button {
+  position: relative;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0e0e10;
+  background-color: #25D366;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.wa-button:hover {
+  transform: scale(1.05);
+}
+
+/* Border animasi */
+.wa-button::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(45deg, #25D366, #1ebc59, #25D366, #1ebc59);
+  border-radius: 16px;
+  z-index: -1;
+  background-size: 400% 400%;
+  animation: moveBorder 3s linear infinite;
+}
+
+@keyframes moveBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
