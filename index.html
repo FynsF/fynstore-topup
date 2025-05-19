@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fynstore Top-Up - Top-up Game Termurah & Tercepat</title>
+    <meta
+      name="description"
+      content="Top-up diamond dan voucher game termurah dan tercepat di Fynstore. Bayar mudah lewat WhatsApp!"
+    />
+    <meta
+      name="keywords"
+      content="top-up game, diamond ML, voucher game murah, Fynstore"
+    />
+    <meta name="author" content="Fynstore Team" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="google-site-verification"
+      content="uMgO-k2xbaG4Or4F4Y0MhAkk6MyxVVlfWkrSnCYkySw"
+    />
+  </head>
+  <body>
+    <header class="header" role="banner">
+      <div class="container header-container">
+        <img src="fyn.png" alt="Fynstore Logo" class="logo" />
+        <h1 class="site-title">Fynstore Top-Up</h1>
+        <nav class="nav" aria-label="Menu navigasi utama">
+          <ul>
+            <li><a href="#hero" class="nav-link">Beranda</a></li>
+            <li><a href="#products" class="nav-link">Produk</a></li>
+            <li><a href="#cart-section" class="nav-link">Keranjang</a></li>
+            <li>
+              <button
+                id="darkModeToggle"
+                aria-label="Toggle mode gelap"
+                title="Mode Gelap"
+              >
+                🌙
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section
+      id="hero"
+      class="hero-section"
+      role="region"
+      aria-label="Bagian sambutan"
+    >
+      <div class="container hero-content">
+        <h2>Top-up Game Termurah & Tercepat</h2>
+        <p>
+          Dapatkan diamond Mobile Legends, voucher game, dan paket data dengan
+          mudah dan aman hanya di Fynstore.
+        </p>
+        <a href="#products" class="btn-primary">Lihat Produk</a>
+      </div>
+    </section>
+
+    <main class="container main-content" role="main">
+      <section
+        id="products"
+        class="product-list"
+        aria-live="polite"
+        aria-label="Daftar produk top-up"
+      >
+        <!-- Produk akan di-generate lewat JS -->
+        <p class="loading-message">Memuat produk...</p>
+      </section>
+
+      <section id="cart-section" class="cart" aria-label="Keranjang belanja">
+        <div class="cart-header">
+          <h2>Keranjang</h2>
+          <button
+            type="button"
+            id="toggleCartBtn"
+            aria-expanded="true"
+            aria-controls="cartContent"
+          >
+            Sembunyikan
+          </button>
+        </div>
+        <div id="cartContent">
+          <ul id="cartItems" class="cart-items-list" aria-live="polite">
+            <li>Keranjang kosong</li>
+          </ul>
+
+          <label for="note">Catatan (ID/Server/Nickname):</label><br />
+          <textarea
+            id="note"
+            name="note"
+            aria-describedby="noteHelp"
+            placeholder="Contoh: 123456 (Server 8921) - NamaAkun"
+            rows="3"
+          ></textarea>
+          <small id="noteHelp"
+            >Masukkan ID game, server, dan nickname dengan jelas.</small
+          >
+
+          <div class="cart-total" aria-live="polite" aria-atomic="true">
+            <p>Total: <span id="cartTotal">Rp0</span></p>
+          </div>
+
+          <button type="button" class="wa-button" onclick="checkout()">
+            Bayar via WhatsApp
+          </button>
+          <button type="button" class="clear-cart" onclick="clearCart()">
+            Hapus Semua
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo" class="footer">
+      <div class="container footer-content">
+        <p>&copy; 2025 <strong>Fynstore</strong>. All rights reserved.</p>
+        <nav class="social-links" aria-label="Ikuti Fynstore di media sosial">
+          <ul>
+            <li>
+              <a
+                href="https://www.instagram.com/fynn_storemlbb?igsh=aHQ1c2VmZ2JwdGU3"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Kunjungi Instagram Fynstore"
+              >
+                <span>@fynstoremlbb</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/6281269441924"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Hubungi Fynstore via WhatsApp"
+              >
+                <span>WhatsApp</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://chat.whatsapp.com/BrmByznEg7ZDxqpIWgMA6S"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Kunjungi Instagram Fynstore"
+              >
+                <span>Link Grup OTOMASIS 24 JAM </span>
+              </a>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
