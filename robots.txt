@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fynsf.github.io/fynstore-topup/sitemap.xml
